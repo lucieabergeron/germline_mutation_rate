@@ -28,4 +28,4 @@ chmod u+x 0.smp/sampling.sh
 ## Submit the file:
 sbatch 0.smp/sampling.sh
 ##
-## This created a .smp.fa.gz file for all the lanes both ends with 10,000 reads
+## This created a .smp.fa.gz file for all the lanes both ends with 1,000,000 reads
