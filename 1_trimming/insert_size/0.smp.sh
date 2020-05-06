@@ -6,6 +6,7 @@
 source ../variable.py
 SP=$sp
 RAW_DIR=raw_seq_dir_w.txt
+PATH=$path
 ##
 ## 0.smp sampling: ###################################################################################################################################################
 ## Import your directories from windows in 'raw_seq_dir_w.txt'
