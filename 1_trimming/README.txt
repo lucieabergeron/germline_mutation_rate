@@ -7,5 +7,5 @@ evaluate insert size in insert_size/
     3.eva_res.sh --> format the results
 
 Trimmed the sequences in filtering/
-    0.filtering.sh --> filters the sequences
+    0.filtering.sh --> filters the sequences (require soapnuke version: 1.5.6)
     1.summary_filtering.sh --> to get the summary
