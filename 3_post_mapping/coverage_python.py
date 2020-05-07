@@ -48,9 +48,8 @@ def average_column(csv, name):
     average = Sum / row_count
     average = round(average,2)
     summary = "{} {} {} {} . {} . {} . {}".format(average, Max, Min, sup_10, sup_30, sup_50, sup_70)
-    cmd = "echo \"{} {} \" >> summary_coverage.txt".format(name, summary)
+    cmd = "echo \"{} {} \" >> {}/{}/bam_files/coverage/summary_coverage.txt".format(name, summary, path, sp)
     subprocess.call(cmd, shell=True)
     f.close()
-
 
 # Function call
