@@ -37,6 +37,7 @@ def coverage(in_dir, seq, out_dir):
     subprocess.call("cp coverage_python.py {}{}_coverage_python.py".format(out_dir, name), shell=True)
     subprocess.call("echo \"average_column(csv='{}{}_coverage.txt', name='{}')\" >> {}{}_coverage_python.py \n".format(out_dir, name, name, out_dir, name), shell=True)
     subprocess.call("sed -i '1s/^/sp=\"{}\"\\n/' {}{}_coverage_python.py \n".format(sp, out_dir, name), shell=True)
+    subprocess.call("sed -i '1s/^/path=\"{}\"\\n/' {}{}_coverage_python.py \n".format(path, direct, name), shell=True)
     """Create a .sh files."""
     file = open('{}{}_coverage.sh'.format(out_dir, seq),'w')
     file.write('#!/bin/bash \n')
@@ -110,10 +111,6 @@ for name in bamfile_dir:
     else:
         print("\t The coverage of {} has NOT been calculated".format(name))
         coverage(in_dir=in_dir, seq=name, out_dir=out_dir)
-        # Prepare the python script
-##        subprocess.call("cp coverage_python.py {}{}_coverage_python.py".format(out_dir, name), shell=True)
-##        subprocess.call("echo \"average_column(csv='{}{}_coverage.txt', name='{}')\" >> {}{}_coverage_python.py \n".format(out_dir, name, name, out_dir, name), shell=True)
-##        subprocess.call("sed -i '1s/^/sp=\"{}\"\\n/' {}{}_coverage_python.py \n".format(sp, out_dir, name))
 
 chr_name(seq=name, direct=in_dir)
 print("\n Look at the name of chromosome only for {} sequence".format(name))
