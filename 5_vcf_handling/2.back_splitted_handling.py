@@ -44,10 +44,9 @@ def back_handling(direct, name):
     """Catenate the three individuals"""
     cat="cat {}DP_{}_1_rm.txt {}DP_{}_2_rm.txt {}DP_{}_3_rm.txt > {}DP_{}_tot_rm.txt".format(direct, name, direct, name, direct, name, direct, name)
     """Python script to find the mean depth per individuals and for all of them"""
-    subprocess.call("cp /home/lucie/MammalianMutation/pipeline_NGS/vcf_handling/coverage_python.py {}{}_coverage_python.py".format(direct, name), shell=True)
+    subprocess.call("cp coverage_python.py {}{}_coverage_python.py".format(direct, name), shell=True)
     subprocess.call("sed -i '1s/^/sp=\"{}\"\\n/' {}{}_coverage_python.py \n".format(sp, direct, name), shell=True)
-##    subprocess.call("sed -i '1s/^/refGenome=\"{}\"\\n/' {}{}_coverage_python.py \n".format(refGenome, direct, name)
-##    subprocess.call("sed -i '1s/^/nb_chrom=\"{}\"\\n/' {}{}_coverage_python.py \n".format(nb_chrom, direct, name)
+    subprocess.call("sed -i '1s/^/path=\"{}\"\\n/' {}{}_coverage_python.py \n".format(path, direct, name), shell=True)
     subprocess.call("echo \"average(direct=direct, name='DP_{}_1_rm.txt')\" >> {}{}_coverage_python.py \n".format(name, direct, name), shell=True)
     subprocess.call("echo \"average(direct=direct, name='DP_{}_2_rm.txt')\" >> {}{}_coverage_python.py \n".format(name, direct, name), shell=True)
     subprocess.call("echo \"average(direct=direct, name='DP_{}_3_rm.txt')\" >> {}{}_coverage_python.py \n".format(name, direct, name), shell=True)
@@ -80,7 +79,7 @@ def back_handling(direct, name):
     file.write('\n')
     file.close()
     ##"""Submit the .sh to the server"""
-    sub_cmd = "sbatch -A MammalianMutation -o {}depth_{}.out {}back_handling_{}.sh".format(direct, name, direct, name)
+    sub_cmd = "sbatch -o {}depth_{}.out {}back_handling_{}.sh".format(direct, name, direct, name)
     subprocess.call(sub_cmd, shell=True)
 
 
